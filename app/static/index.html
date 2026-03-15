@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Technical Debugging Assistant</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #0f111a;
+      --surface: #1a1d2e;
+      --surface2: #232740;
+      --border: #2e3348;
+      --text: #e2e4f0;
+      --text-dim: #8b8fa8;
+      --accent: #7c5cfc;
+      --accent-hover: #9479ff;
+      --green: #4ade80;
+      --amber: #fbbf24;
+      --red: #f87171;
+      --radius: 12px;
+      --font-mono: 'SF Mono', 'Fira Code', 'Cascadia Code', monospace;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 2rem 1rem;
+    }
+
+    header {
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+
+    header h1 {
+      font-size: 1.75rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      margin-bottom: 0.25rem;
+    }
+
+    header p {
+      color: var(--text-dim);
+      font-size: 0.95rem;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 960px;
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.5rem;
+    }
+
+    .card-title {
+      font-size: 0.8rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--text-dim);
+      margin-bottom: 0.75rem;
+    }
+
+    textarea {
+      width: 100%;
+      min-height: 180px;
+      background: var(--surface2);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      color: var(--text);
+      font-family: var(--font-mono);
+      font-size: 0.85rem;
+      line-height: 1.6;
+      padding: 1rem;
+      resize: vertical;
+      outline: none;
+      transition: border-color 0.2s;
+    }
+
+    textarea:focus { border-color: var(--accent); }
+
+    textarea::placeholder { color: var(--text-dim); }
+
+    .actions {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-top: 0.75rem;
+    }
+
+    button {
+      background: var(--accent);
+      color: #fff;
+      border: none;
+      border-radius: 8px;
+      padding: 0.65rem 1.5rem;
+      font-size: 0.9rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.2s, transform 0.1s;
+    }
+
+    button:hover { background: var(--accent-hover); }
+    button:active { transform: scale(0.97); }
+    button:disabled { opacity: 0.5; cursor: not-allowed; }
+
+    .sample-btn {
+      background: transparent;
+      color: var(--accent);
+      border: 1px solid var(--accent);
+      font-size: 0.8rem;
+      padding: 0.5rem 1rem;
+    }
+
+    .sample-btn:hover { background: rgba(124, 92, 252, 0.1); }
+
+    .status {
+      font-size: 0.85rem;
+      color: var(--text-dim);
+    }
+
+    .status.error { color: var(--red); }
+
+    /* Result section */
+    #result-section { display: none; }
+    #result-section.visible { display: block; }
+
+    .diagnosis-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+    }
+
+    @media (max-width: 640px) {
+      .diagnosis-grid { grid-template-columns: 1fr; }
+    }
+
+    .diag-card {
+      background: var(--surface2);
+      border-radius: 8px;
+      padding: 1rem;
+    }
+
+    .diag-card.full-width {
+      grid-column: 1 / -1;
+    }
+
+    .diag-label {
+      font-size: 0.7rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--text-dim);
+      margin-bottom: 0.5rem;
+    }
+
+    .diag-card ul {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.35rem;
+    }
+
+    .diag-card li {
+      font-size: 0.85rem;
+      line-height: 1.5;
+      padding-left: 1rem;
+      position: relative;
+    }
+
+    .diag-card li::before {
+      content: '›';
+      position: absolute;
+      left: 0;
+      color: var(--accent);
+      font-weight: 700;
+    }
+
+    .hypothesis {
+      border-left: 3px solid var(--accent);
+      padding: 0.6rem 0.8rem;
+      margin-bottom: 0.5rem;
+      border-radius: 0 6px 6px 0;
+      background: rgba(124, 92, 252, 0.05);
+    }
+
+    .hypothesis .rank {
+      font-size: 0.7rem;
+      font-weight: 700;
+      color: var(--accent);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .hypothesis .fault-name {
+      font-weight: 600;
+      font-size: 0.9rem;
+      margin: 0.15rem 0;
+    }
+
+    .hypothesis .reasoning {
+      font-size: 0.8rem;
+      color: var(--text-dim);
+      line-height: 1.5;
+    }
+
+    .confidence-bar-wrap {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .confidence-bar {
+      flex: 1;
+      height: 8px;
+      background: var(--border);
+      border-radius: 4px;
+      overflow: hidden;
+    }
+
+    .confidence-fill {
+      height: 100%;
+      border-radius: 4px;
+      transition: width 0.6s ease;
+    }
+
+    .confidence-value {
+      font-family: var(--font-mono);
+      font-size: 0.9rem;
+      font-weight: 700;
+      min-width: 3.5rem;
+      text-align: right;
+    }
+
+    .raw-json-toggle {
+      background: transparent;
+      color: var(--text-dim);
+      border: 1px solid var(--border);
+      font-size: 0.75rem;
+      padding: 0.35rem 0.75rem;
+      margin-top: 1rem;
+    }
+
+    .raw-json-toggle:hover { color: var(--text); border-color: var(--text-dim); }
+
+    pre.raw-json {
+      display: none;
+      margin-top: 0.75rem;
+      background: var(--surface2);
+      border-radius: 8px;
+      padding: 1rem;
+      font-family: var(--font-mono);
+      font-size: 0.8rem;
+      line-height: 1.6;
+      overflow-x: auto;
+      white-space: pre-wrap;
+      color: var(--text-dim);
+    }
+
+    pre.raw-json.visible { display: block; }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Technical Debugging Assistant</h1>
+    <p>Paste a log snippet or symptom description — get a structured fault diagnosis</p>
+  </header>
+
+  <div class="container">
+    <div class="card">
+      <div class="card-title">Input</div>
+      <textarea id="log-input" placeholder="Paste your log snippet, sensor readings, or error description here..."></textarea>
+      <div class="actions">
+        <button id="diagnose-btn" onclick="runDiagnosis()">Diagnose</button>
+        <button class="sample-btn" onclick="loadSample()">Load sample log</button>
+        <span id="status" class="status"></span>
+      </div>
+    </div>
+
+    <div id="result-section" class="card">
+      <div class="card-title">Diagnosis</div>
+      <div id="diagnosis-output"></div>
+      <button class="raw-json-toggle" onclick="toggleRawJson()">Toggle raw JSON</button>
+      <pre id="raw-json" class="raw-json"></pre>
+    </div>
+  </div>
+
+  <script>
+    const SAMPLE_LOG = `[2025-03-04 14:22:01] WARN  Vibration sensor #3 (Drive-End Bearing): RMS velocity = 12.8 mm/s (threshold: 7.0 mm/s)
+[2025-03-04 14:22:01] INFO  Vibration sensor #1 (Fan-End Bearing): RMS velocity = 3.2 mm/s (OK)
+[2025-03-04 14:22:05] WARN  Temperature sensor #3: 87°C (threshold: 75°C)
+[2025-03-04 14:22:10] ERR   Spectral analysis: dominant peak at BPFO = 142 Hz, harmonics at 284 Hz, 426 Hz
+[2025-03-04 14:22:10] INFO  Shaft speed: 1780 RPM, bearing model: SKF 6205
+[2025-03-04 14:22:15] WARN  Envelope spectrum: modulation sidebands at cage frequency ± 11.8 Hz
+[2025-03-04 14:22:20] INFO  Lubrication schedule: last grease application 45 days ago (interval: 30 days)
+[2025-03-04 14:22:25] WARN  Kurtosis value: 6.4 (baseline: 3.0)`;
+
+    function loadSample() {
+      document.getElementById('log-input').value = SAMPLE_LOG;
+    }
+
+    async function runDiagnosis() {
+      const input = document.getElementById('log-input').value.trim();
+      if (!input) return;
+
+      const btn = document.getElementById('diagnose-btn');
+      const status = document.getElementById('status');
+      const resultSection = document.getElementById('result-section');
+
+      btn.disabled = true;
+      status.textContent = 'Analyzing...';
+      status.className = 'status';
+      resultSection.classList.remove('visible');
+
+      try {
+        const resp = await fetch('/diagnose', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ log_snippet: input }),
+        });
+
+        if (!resp.ok) {
+          const err = await resp.json();
+          throw new Error(err.detail || `HTTP ${resp.status}`);
+        }
+
+        const data = await resp.json();
+        renderDiagnosis(data.diagnosis);
+        document.getElementById('raw-json').textContent = JSON.stringify(data.diagnosis, null, 2);
+        resultSection.classList.add('visible');
+        status.textContent = 'Done';
+      } catch (e) {
+        status.textContent = e.message;
+        status.className = 'status error';
+      } finally {
+        btn.disabled = false;
+      }
+    }
+
+    function renderDiagnosis(d) {
+      const confidenceColor = d.confidence >= 0.7 ? 'var(--green)'
+        : d.confidence >= 0.4 ? 'var(--amber)' : 'var(--red)';
+
+      let html = '<div class="diagnosis-grid">';
+
+      // Symptoms
+      html += `<div class="diag-card">
+        <div class="diag-label">Symptoms Detected</div>
+        <ul>${d.symptoms_detected.map(s => `<li>${esc(s)}</li>`).join('')}</ul>
+      </div>`;
+
+      // Evidence needed
+      html += `<div class="diag-card">
+        <div class="diag-label">Evidence Needed</div>
+        <ul>${d.evidence_needed.map(e => `<li>${esc(e)}</li>`).join('')}</ul>
+      </div>`;
+
+      // Hypotheses (full width)
+      html += `<div class="diag-card full-width">
+        <div class="diag-label">Top Fault Hypotheses</div>
+        ${d.top_fault_hypotheses.map(h => `
+          <div class="hypothesis">
+            <div class="rank">#${h.rank}</div>
+            <div class="fault-name">${esc(h.fault)}</div>
+            <div class="reasoning">${esc(h.reasoning)}</div>
+          </div>`).join('')}
+      </div>`;
+
+      // Next tests
+      html += `<div class="diag-card">
+        <div class="diag-label">Next Tests</div>
+        <ul>${d.next_tests.map(t => `<li>${esc(t)}</li>`).join('')}</ul>
+      </div>`;
+
+      // Confidence
+      html += `<div class="diag-card">
+        <div class="diag-label">Confidence</div>
+        <div class="confidence-bar-wrap">
+          <div class="confidence-bar">
+            <div class="confidence-fill" style="width:${d.confidence * 100}%; background:${confidenceColor}"></div>
+          </div>
+          <div class="confidence-value" style="color:${confidenceColor}">${(d.confidence * 100).toFixed(0)}%</div>
+        </div>
+      </div>`;
+
+      html += '</div>';
+      document.getElementById('diagnosis-output').innerHTML = html;
+    }
+
+    function esc(str) {
+      const el = document.createElement('span');
+      el.textContent = str;
+      return el.innerHTML;
+    }
+
+    function toggleRawJson() {
+      document.getElementById('raw-json').classList.toggle('visible');
+    }
+  </script>
+</body>
+</html>
