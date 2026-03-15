@@ -1,0 +1,1258 @@
+[
+  {
+    "id": "BRG-004",
+    "fault_name": "Cage defect",
+    "aliases": [
+      "FTF fault",
+      "train defect",
+      "separator defect"
+    ],
+    "category": "localized_bearing_defect",
+    "bearing_components": [
+      "cage"
+    ],
+    "observability_from_vibration": "medium",
+    "confidence": "medium",
+    "tags": [
+      "cage",
+      "ftf_fault",
+      "localized_bearing_defect",
+      "medium",
+      "train_defect"
+    ],
+    "references": [
+      {
+        "title": "NI Calculate Characteristic Frequencies and Orders",
+        "source": "NI",
+        "url": "https://www.ni.com/docs/en-US/bundle/labview-sound-and-vibration-toolkit/page/calculating-characteristic-frequencies-and-or.html"
+      },
+      {
+        "title": "SKF Spectrum Analysis",
+        "source": "SKF",
+        "url": "https://cdn.skfmediahub.skf.com/api/public/0901d1968024acef/pdf_preview_medium/0901d1968024acef_pdf_preview_medium.pdf"
+      }
+    ],
+    "symptoms": [
+      "Low-frequency modulation and instability",
+      "Impulsive or rattling behavior",
+      "Envelope activity near FTF and combinations with other defect frequencies"
+    ],
+    "likely_causes": [
+      "Poor lubrication",
+      "Skidding or instability under light load",
+      "Advanced bearing damage affecting cage motion",
+      "Debris or installation damage"
+    ],
+    "expected_vibration_signatures": [
+      "FTF-related peaks, often weaker than race defects",
+      "Modulation sidebands around higher-frequency bearing components",
+      "May co-occur with BSF/BPFO/BPFI activity in advanced damage"
+    ],
+    "confirm_tests": [
+      "Calculate FTF and inspect envelope/order spectrum",
+      "Look for modulation rather than only strong direct peaks",
+      "Check lubrication state and loading regime",
+      "Inspect for advanced bearing damage if multiple defect families coexist"
+    ],
+    "fixes": [
+      "Replace the bearing",
+      "Correct lubrication and operating load",
+      "Investigate upstream causes of skidding or severe damage"
+    ],
+    "notes": "Cage faults are important but usually harder than race faults for a vibration-only system.",
+    "source_file": "cage_defect.md"
+  },
+  {
+    "id": "BRG-019",
+    "fault_name": "Corrosion / moisture damage",
+    "aliases": [
+      "moisture-induced pitting",
+      "rust damage"
+    ],
+    "category": "damage_mechanism",
+    "bearing_components": [
+      "raceways",
+      "rolling_elements"
+    ],
+    "observability_from_vibration": "low_medium",
+    "confidence": "medium_high",
+    "tags": [
+      "damage_mechanism",
+      "low_medium",
+      "moisture-induced_pitting",
+      "raceways",
+      "rolling_elements",
+      "rust_damage"
+    ],
+    "references": [
+      {
+        "title": "NSK Bearing Maintenance Guide",
+        "source": "NSK",
+        "url": "https://www.nsk.com/content/dam/nsk/am/en_us/documents/bearings-americas/Bearing-Maintenance-Guide.pdf"
+      }
+    ],
+    "symptoms": [
+      "Growing roughness and noise",
+      "Can lead to pitting and later localized defects",
+      "Often linked with poor storage or water ingress"
+    ],
+    "likely_causes": [
+      "Moisture exposure in atmosphere or lubricant",
+      "Poor seals",
+      "Long storage in poor conditions"
+    ],
+    "expected_vibration_signatures": [
+      "Early-stage signature is usually non-unique and roughness-dominated",
+      "Later stage may resemble pitting or spalling"
+    ],
+    "confirm_tests": [
+      "Check for water ingress, rust, or lubricant contamination",
+      "Inspect seals and storage conditions",
+      "Look for pitting associated with corrosion"
+    ],
+    "fixes": [
+      "Eliminate moisture ingress and improve sealing",
+      "Replace contaminated lubricant and damaged bearing",
+      "Improve storage and preservation practice"
+    ],
+    "notes": "Best treated as a causal/root-cause card plus inspection metadata rather than a pure vibration label.",
+    "source_file": "corrosion_moisture_damage.md"
+  },
+  {
+    "id": "BRG-012",
+    "fault_name": "Creep / loose fit at bearing seat",
+    "aliases": [
+      "ring creep",
+      "fit slip",
+      "insufficient interference"
+    ],
+    "category": "installation_fit_issue",
+    "bearing_components": [
+      "fits",
+      "inner_race",
+      "outer_race"
+    ],
+    "observability_from_vibration": "medium",
+    "confidence": "high",
+    "tags": [
+      "fit_slip",
+      "fits",
+      "inner_race",
+      "installation_fit_issue",
+      "medium",
+      "outer_race",
+      "ring_creep"
+    ],
+    "references": [
+      {
+        "title": "NSK Bearing Maintenance Guide",
+        "source": "NSK",
+        "url": "https://www.nsk.com/content/dam/nsk/am/en_us/documents/bearings-americas/Bearing-Maintenance-Guide.pdf"
+      },
+      {
+        "title": "SKF Spectrum Analysis",
+        "source": "SKF",
+        "url": "https://cdn.skfmediahub.skf.com/api/public/0901d1968024acef/pdf_preview_medium/0901d1968024acef_pdf_preview_medium.pdf"
+      }
+    ],
+    "symptoms": [
+      "Rubbing or looseness-related vibration",
+      "Growing clearance and instability",
+      "Secondary wear or scoring at fit surfaces"
+    ],
+    "likely_causes": [
+      "Insufficient interference or loose fit",
+      "Insufficient sleeve tightening",
+      "Poor shaft or housing precision"
+    ],
+    "expected_vibration_signatures": [
+      "May resemble mechanical looseness with harmonics and instability",
+      "Can coexist with bearing-defect frequencies if the bearing is already damaged"
+    ],
+    "confirm_tests": [
+      "Check shaft/housing fit and sleeve tightening",
+      "Inspect for circumferential scoring or shiny slipped surfaces",
+      "Use phase and harmonics to separate from pure unbalance"
+    ],
+    "fixes": [
+      "Correct interference fit and tightening",
+      "Improve shaft/housing precision",
+      "Consider axial preload or anti-rotation measures where appropriate"
+    ],
+    "notes": "A useful 'don’t mislabel as only bearing damage' card because fit problems can masquerade as generic looseness.",
+    "source_file": "creep_loose_fit.md"
+  },
+  {
+    "id": "BRG-013",
+    "fault_name": "Electrical erosion / fluting",
+    "aliases": [
+      "electrical discharge damage",
+      "fluting",
+      "current through bearing"
+    ],
+    "category": "root_cause",
+    "bearing_components": [
+      "raceways",
+      "rolling_elements"
+    ],
+    "observability_from_vibration": "medium",
+    "confidence": "high",
+    "tags": [
+      "electrical_discharge_damage",
+      "fluting",
+      "medium",
+      "raceways",
+      "rolling_elements",
+      "root_cause"
+    ],
+    "references": [
+      {
+        "title": "NSK Bearing Maintenance Guide",
+        "source": "NSK",
+        "url": "https://www.nsk.com/content/dam/nsk/am/en_us/documents/bearings-americas/Bearing-Maintenance-Guide.pdf"
+      },
+      {
+        "title": "SKF Spectrum Analysis",
+        "source": "SKF",
+        "url": "https://cdn.skfmediahub.skf.com/api/public/0901d1968024acef/pdf_preview_medium/0901d1968024acef_pdf_preview_medium.pdf"
+      }
+    ],
+    "symptoms": [
+      "Distinct tonal noise or roughness after damage develops",
+      "Premature vibration increase even when lubrication appears normal"
+    ],
+    "likely_causes": [
+      "Electric current passing through the bearing",
+      "Poor grounding or inverter-related shaft currents"
+    ],
+    "expected_vibration_signatures": [
+      "Can produce characteristic roughness and broadband activity; advanced fluting may create tonal components",
+      "Vibration-only pattern is less canonical than BPFO/BPFI and usually benefits from electrical context"
+    ],
+    "confirm_tests": [
+      "Check for shaft voltage/current and grounding issues",
+      "Inspect raceways for fluting or washboard-like corrugation",
+      "Correlate with inverter drive operation"
+    ],
+    "fixes": [
+      "Mitigate shaft currents with grounding or insulated bearings where appropriate",
+      "Replace damaged bearing",
+      "Check drive and grounding architecture"
+    ],
+    "notes": "Include this card because it is common in modern variable-speed-drive systems but often missed by purely mechanical taxonomies.",
+    "source_file": "electrical_erosion_fluting.md"
+  },
+  {
+    "id": "BRG-015",
+    "fault_name": "Excessive preload",
+    "aliases": [
+      "too much preload",
+      "preload overheating",
+      "preload damage"
+    ],
+    "category": "installation_operating_issue",
+    "bearing_components": [
+      "all"
+    ],
+    "observability_from_vibration": "medium",
+    "confidence": "high",
+    "tags": [
+      "all",
+      "installation_operating_issue",
+      "medium",
+      "preload_overheating",
+      "too_much_preload"
+    ],
+    "references": [
+      {
+        "title": "NSK Bearing Maintenance Guide",
+        "source": "NSK",
+        "url": "https://www.nsk.com/content/dam/nsk/am/en_us/documents/bearings-americas/Bearing-Maintenance-Guide.pdf"
+      },
+      {
+        "title": "SKF Spectrum Analysis",
+        "source": "SKF",
+        "url": "https://cdn.skfmediahub.skf.com/api/public/0901d1968024acef/pdf_preview_medium/0901d1968024acef_pdf_preview_medium.pdf"
+      }
+    ],
+    "symptoms": [
+      "Heat generation and rising vibration",
+      "Premature wear or seizure-like progression",
+      "Discoloration or melting may be seen after teardown"
+    ],
+    "likely_causes": [
+      "Incorrect assembly preload",
+      "Thermal growth not accounted for",
+      "Incorrect fit/stack-up"
+    ],
+    "expected_vibration_signatures": [
+      "Broadband roughness and elevated overall vibration",
+      "May coexist with misalignment-like or inner-race-related stress patterns"
+    ],
+    "confirm_tests": [
+      "Check assembly procedure, endplay/preload specs, and thermal growth assumptions",
+      "Inspect for raceway discoloration at ball pitch intervals",
+      "Correlate with temperature increase"
+    ],
+    "fixes": [
+      "Reset preload to specification",
+      "Re-evaluate fit and thermal expansion assumptions",
+      "Replace bearing if damage is present"
+    ],
+    "notes": "Keep separate from seizure because excessive preload is a common actionable cause rather than only an end-state.",
+    "source_file": "excessive_preload.md"
+  },
+  {
+    "id": "BRG-011",
+    "fault_name": "False brinelling",
+    "aliases": [
+      "transport vibration damage",
+      "stationary vibration wear"
+    ],
+    "category": "damage_mechanism",
+    "bearing_components": [
+      "raceways",
+      "rolling_elements"
+    ],
+    "observability_from_vibration": "low",
+    "confidence": "high",
+    "tags": [
+      "damage_mechanism",
+      "low",
+      "raceways",
+      "rolling_elements",
+      "stationary_vibration_wear",
+      "transport_vibration_damage"
+    ],
+    "references": [
+      {
+        "title": "NSK Bearing Maintenance Guide",
+        "source": "NSK",
+        "url": "https://www.nsk.com/content/dam/nsk/am/en_us/documents/bearings-americas/Bearing-Maintenance-Guide.pdf"
+      },
+      {
+        "title": "SKF Spectrum Analysis",
+        "source": "SKF",
+        "url": "https://cdn.skfmediahub.skf.com/api/public/0901d1968024acef/pdf_preview_medium/0901d1968024acef_pdf_preview_medium.pdf"
+      }
+    ],
+    "symptoms": [
+      "Damage may only become obvious after the bearing returns to service",
+      "Can later resemble localized surface damage with noise and vibration"
+    ],
+    "likely_causes": [
+      "Vibration of a stationary bearing during transport or storage",
+      "Small-amplitude oscillatory motion",
+      "Poor lubrication"
+    ],
+    "expected_vibration_signatures": [
+      "No strong online signature while stationary unless external vibration is measured directly",
+      "When in service later, may show roughness or localized defect-like impacts"
+    ],
+    "confirm_tests": [
+      "Check storage/transport history",
+      "Inspect raceways/rollers for false-brinell marks",
+      "Differentiate from true brinelling by history and damage appearance"
+    ],
+    "fixes": [
+      "Secure shaft and housing during transport",
+      "Pack inner and outer rings separately when appropriate",
+      "Reduce vibration by preloading",
+      "Use proper lubricant"
+    ],
+    "notes": "Important real-world card, but vibration-only diagnosis is weak unless contextual metadata is available.",
+    "source_file": "false_brinelling.md"
+  },
+  {
+    "id": "BRG-010",
+    "fault_name": "Fretting",
+    "aliases": [
+      "fretting corrosion",
+      "small-amplitude sliding wear"
+    ],
+    "category": "damage_mechanism",
+    "bearing_components": [
+      "fits",
+      "raceways",
+      "rolling_elements"
+    ],
+    "observability_from_vibration": "low_medium",
+    "confidence": "high",
+    "tags": [
+      "damage_mechanism",
+      "fits",
+      "fretting_corrosion",
+      "low_medium",
+      "raceways",
+      "rolling_elements",
+      "small-amplitude_sliding_wear"
+    ],
+    "references": [
+      {
+        "title": "NSK Bearing Maintenance Guide",
+        "source": "NSK",
+        "url": "https://www.nsk.com/content/dam/nsk/am/en_us/documents/bearings-americas/Bearing-Maintenance-Guide.pdf"
+      }
+    ],
+    "symptoms": [
+      "Rubbing-like or rough vibration",
+      "Possible low-amplitude repetitive wear signatures",
+      "May coexist with looseness or poor fit"
+    ],
+    "likely_causes": [
+      "Poor lubrication",
+      "Small-amplitude vibration",
+      "Insufficient interference fit"
+    ],
+    "expected_vibration_signatures": [
+      "Often non-unique from vibration alone",
+      "May show increased roughness, looseness-like components, or local defect growth later"
+    ],
+    "confirm_tests": [
+      "Check fits and preload",
+      "Inspect bore/raceway surfaces for reddish-brown or black worn particles",
+      "Review whether the machine sees small-amplitude oscillation"
+    ],
+    "fixes": [
+      "Use proper lubricant",
+      "Apply preload",
+      "Check interference fit",
+      "Apply lubricant film to fitting surface"
+    ],
+    "notes": "Mark this as low-to-medium observability for a vibration-only assistant; strong root-cause inference usually needs inspection or maintenance context.",
+    "source_file": "fretting.md"
+  },
+  {
+    "id": "BRG-020",
+    "fault_name": "Improper installation or handling damage",
+    "aliases": [
+      "mounting damage",
+      "installation damage",
+      "handling-induced bearing damage"
+    ],
+    "category": "root_cause",
+    "bearing_components": [
+      "all"
+    ],
+    "observability_from_vibration": "medium",
+    "confidence": "high",
+    "tags": [
+      "all",
+      "installation_damage",
+      "medium",
+      "mounting_damage",
+      "root_cause"
+    ],
+    "references": [
+      {
+        "title": "SKF Spectrum Analysis",
+        "source": "SKF",
+        "url": "https://cdn.skfmediahub.skf.com/api/public/0901d1968024acef/pdf_preview_medium/0901d1968024acef_pdf_preview_medium.pdf"
+      },
+      {
+        "title": "SKF Bearing Damage and Failure Analysis",
+        "source": "SKF",
+        "url": "https://cdn.skfmediahub.skf.com/api/public/093168a92d25cc46/pdf_preview_medium/093168a92d25cc46_pdf_preview_medium.pdf"
+      },
+      {
+        "title": "NSK Bearing Maintenance Guide",
+        "source": "NSK",
+        "url": "https://www.nsk.com/content/dam/nsk/am/en_us/documents/bearings-americas/Bearing-Maintenance-Guide.pdf"
+      }
+    ],
+    "symptoms": [
+      "Premature vibration after recent replacement or installation",
+      "Unexpected early defect growth",
+      "Noise and heat appear sooner than expected"
+    ],
+    "likely_causes": [
+      "Impact during mounting",
+      "Incorrect fits or assembly procedure",
+      "Contamination introduced during installation",
+      "Misalignment introduced during installation"
+    ],
+    "expected_vibration_signatures": [
+      "Can mimic localized race/rolling-element defects or looseness",
+      "Pattern depends on the type of damage created during installation"
+    ],
+    "confirm_tests": [
+      "Check maintenance history and time-to-failure after replacement",
+      "Review mounting method and fit tolerances",
+      "Inspect removed bearing for handling marks, dents, or fit-related damage"
+    ],
+    "fixes": [
+      "Standardize installation procedure and tools",
+      "Control cleanliness and fit tolerances",
+      "Retrain handling practice and replace damaged bearings"
+    ],
+    "notes": "This card helps the assistant reason over recent maintenance events, which are often stronger clues than the spectrum alone.",
+    "source_file": "improper_installation_or_handling.md"
+  },
+  {
+    "id": "BRG-002",
+    "fault_name": "Inner race defect",
+    "aliases": [
+      "BPFI fault",
+      "inner race spall",
+      "inner ring defect"
+    ],
+    "category": "localized_bearing_defect",
+    "bearing_components": [
+      "inner_race"
+    ],
+    "observability_from_vibration": "high",
+    "confidence": "high",
+    "tags": [
+      "bpfi_fault",
+      "high",
+      "inner_race",
+      "inner_race_spall",
+      "localized_bearing_defect"
+    ],
+    "references": [
+      {
+        "title": "NI Bearings: Envelope Detection and Characteristic Frequencies",
+        "source": "NI",
+        "url": "https://www.ni.com/docs/en-US/bundle/labview-sound-and-vibration-toolkit/page/bearings.html"
+      },
+      {
+        "title": "NI Calculate Characteristic Frequencies and Orders",
+        "source": "NI",
+        "url": "https://www.ni.com/docs/en-US/bundle/labview-sound-and-vibration-toolkit/page/calculating-characteristic-frequencies-and-or.html"
+      },
+      {
+        "title": "SKF Spectrum Analysis",
+        "source": "SKF",
+        "url": "https://cdn.skfmediahub.skf.com/api/public/0901d1968024acef/pdf_preview_medium/0901d1968024acef_pdf_preview_medium.pdf"
+      },
+      {
+        "title": "CWRU Bearing Data Center",
+        "source": "Case Western Reserve University",
+        "url": "https://engineering.case.edu/bearingdatacenter"
+      }
+    ],
+    "symptoms": [
+      "Periodic impacts with stronger amplitude modulation than outer-race faults",
+      "Envelope spectrum peaks near BPFI and harmonics",
+      "Noise and vibration increase with progression"
+    ],
+    "likely_causes": [
+      "Surface fatigue and spalling",
+      "Poor lubrication or contaminated lubricant",
+      "Improper mounting or overload"
+    ],
+    "expected_vibration_signatures": [
+      "BPFI and harmonics in envelope spectrum",
+      "Sidebands around BPFI harmonics may appear because the defect rotates through the load zone",
+      "High-frequency acceleration is usually more informative than overall velocity early on"
+    ],
+    "confirm_tests": [
+      "Compute BPFI from geometry and shaft speed",
+      "Overlay BPFI orders on the envelope spectrum",
+      "Check time waveform for repeated impulsive events with modulation",
+      "Inspect for misalignment or preload issues that may have accelerated damage"
+    ],
+    "fixes": [
+      "Replace the bearing if confirmed",
+      "Correct lubrication, preload, misalignment, or overload",
+      "Review mounting method and fit tolerance"
+    ],
+    "notes": "Inner-race faults are commonly detectable but may require better demodulation than coarse overall metrics.",
+    "source_file": "inner_race_defect.md"
+  },
+  {
+    "id": "BRG-008",
+    "fault_name": "Contaminated lubrication / debris ingress",
+    "aliases": [
+      "dirty grease",
+      "dirty oil",
+      "particle contamination"
+    ],
+    "category": "root_cause",
+    "bearing_components": [
+      "all"
+    ],
+    "observability_from_vibration": "medium",
+    "confidence": "high",
+    "tags": [
+      "all",
+      "dirty_grease",
+      "dirty_oil",
+      "medium",
+      "root_cause"
+    ],
+    "references": [
+      {
+        "title": "NSK Bearing Maintenance Guide",
+        "source": "NSK",
+        "url": "https://www.nsk.com/content/dam/nsk/am/en_us/documents/bearings-americas/Bearing-Maintenance-Guide.pdf"
+      },
+      {
+        "title": "SKF Spectrum Analysis",
+        "source": "SKF",
+        "url": "https://cdn.skfmediahub.skf.com/api/public/0901d1968024acef/pdf_preview_medium/0901d1968024acef_pdf_preview_medium.pdf"
+      },
+      {
+        "title": "SKF Bearing Damage and Failure Analysis",
+        "source": "SKF",
+        "url": "https://cdn.skfmediahub.skf.com/api/public/093168a92d25cc46/pdf_preview_medium/093168a92d25cc46_pdf_preview_medium.pdf"
+      }
+    ],
+    "symptoms": [
+      "Broadband roughness and high-frequency noise",
+      "Premature impulsive activity and wear",
+      "Damage can evolve into pitting, indentation, or spalling"
+    ],
+    "likely_causes": [
+      "Poor seals",
+      "Dirty relubrication practice",
+      "Moisture or debris entering the bearing",
+      "Particles trapped between rolling element and raceway"
+    ],
+    "expected_vibration_signatures": [
+      "Elevated broadband HF energy",
+      "Possible impulsive events but often less clean than a single seeded defect",
+      "Progressive growth of defect-family lines as damage localizes"
+    ],
+    "confirm_tests": [
+      "Inspect seals and contamination source",
+      "Sample lubricant for particles or moisture",
+      "Check if vibration growth correlates with recent maintenance or environmental exposure"
+    ],
+    "fixes": [
+      "Improve sealing and cleanliness",
+      "Filter or replace lubricant",
+      "Replace the bearing if raceway damage has formed"
+    ],
+    "notes": "A critical real-world card because many benchmark datasets overrepresent clean seeded defects and underrepresent contamination-driven failures.",
+    "source_file": "lubrication_contamination.md"
+  },
+  {
+    "id": "BRG-007",
+    "fault_name": "Lubrication starvation / ineffective lubrication",
+    "aliases": [
+      "poor lubrication",
+      "lubrication failure",
+      "insufficient film"
+    ],
+    "category": "root_cause",
+    "bearing_components": [
+      "all"
+    ],
+    "observability_from_vibration": "medium",
+    "confidence": "medium_high",
+    "tags": [
+      "all",
+      "lubrication_failure",
+      "medium",
+      "poor_lubrication",
+      "root_cause"
+    ],
+    "references": [
+      {
+        "title": "SKF Spectrum Analysis",
+        "source": "SKF",
+        "url": "https://cdn.skfmediahub.skf.com/api/public/0901d1968024acef/pdf_preview_medium/0901d1968024acef_pdf_preview_medium.pdf"
+      },
+      {
+        "title": "NSK Bearing Maintenance Guide",
+        "source": "NSK",
+        "url": "https://www.nsk.com/content/dam/nsk/am/en_us/documents/bearings-americas/Bearing-Maintenance-Guide.pdf"
+      },
+      {
+        "title": "SKF Bearing Damage and Failure Analysis",
+        "source": "SKF",
+        "url": "https://cdn.skfmediahub.skf.com/api/public/093168a92d25cc46/pdf_preview_medium/093168a92d25cc46_pdf_preview_medium.pdf"
+      }
+    ],
+    "symptoms": [
+      "Rising high-frequency vibration and temperature",
+      "Increased noise and roughness",
+      "Premature growth of localized defect features"
+    ],
+    "likely_causes": [
+      "Wrong lubricant type or amount",
+      "Relubrication interval too long",
+      "Blocked grease path or poor oil supply",
+      "Excess heat degrading lubricant"
+    ],
+    "expected_vibration_signatures": [
+      "Broadband HF acceleration growth",
+      "Envelope activity may rise before clear BPFO/BPFI labels",
+      "May evolve into surface distress, spalling, seizure, or fretting-related damage"
+    ],
+    "confirm_tests": [
+      "Check lubricant condition, quantity, and delivery path",
+      "Correlate with temperature and maintenance records",
+      "Inspect whether demodulated spectrum is showing early local defects"
+    ],
+    "fixes": [
+      "Restore correct lubricant type, quantity, and interval",
+      "Fix delivery path and seals",
+      "Replace damaged bearing if secondary damage is present"
+    ],
+    "notes": "Vibration alone often indicates the effect of poor lubrication before it cleanly identifies the cause.",
+    "source_file": "lubrication_starvation.md"
+  },
+  {
+    "id": "BRG-018",
+    "fault_name": "Mechanical looseness near bearing",
+    "aliases": [
+      "bearing-seat looseness",
+      "mounting looseness",
+      "clearance-driven looseness"
+    ],
+    "category": "adjacent_machine_fault",
+    "bearing_components": [
+      "system_level",
+      "bearing_seat"
+    ],
+    "observability_from_vibration": "high",
+    "confidence": "high",
+    "tags": [
+      "adjacent_machine_fault",
+      "bearing-seat_looseness",
+      "bearing_seat",
+      "high",
+      "mounting_looseness",
+      "system_level"
+    ],
+    "references": [
+      {
+        "title": "SKF Spectrum Analysis",
+        "source": "SKF",
+        "url": "https://cdn.skfmediahub.skf.com/api/public/0901d1968024acef/pdf_preview_medium/0901d1968024acef_pdf_preview_medium.pdf"
+      }
+    ],
+    "symptoms": [
+      "Series of harmonics or half-harmonics of running speed",
+      "Rattling/impacting behavior",
+      "Vibration may be direction-dependent"
+    ],
+    "likely_causes": [
+      "Machine loose on mounting",
+      "Cracked or broken mounting",
+      "Loose component",
+      "Worn bearing elements or excessive clearance at bearing seat"
+    ],
+    "expected_vibration_signatures": [
+      "Three or more harmonics or half-harmonics from roughly 2× to 10× running speed",
+      "1× often high, with decaying harmonic family"
+    ],
+    "confirm_tests": [
+      "Inspect mountings and bearing seats",
+      "Use FFT plus phase to distinguish from misalignment and rub",
+      "Check for excessive clearance or wear"
+    ],
+    "fixes": [
+      "Tighten or repair mounting/components",
+      "Restore correct fits/clearances",
+      "Replace bearing if wear created the looseness"
+    ],
+    "notes": "A must-have negative-control card to prevent overcalling every impulsive spectrum as a bearing race defect.",
+    "source_file": "mechanical_looseness_near_bearing.md"
+  },
+  {
+    "id": "BRG-016",
+    "fault_name": "Misalignment-induced bearing loading",
+    "aliases": [
+      "shaft misalignment",
+      "coupling misalignment affecting bearing"
+    ],
+    "category": "adjacent_machine_fault",
+    "bearing_components": [
+      "system_level"
+    ],
+    "observability_from_vibration": "high",
+    "confidence": "high",
+    "tags": [
+      "adjacent_machine_fault",
+      "coupling_misalignment_affecting_bearing",
+      "high",
+      "shaft_misalignment",
+      "system_level"
+    ],
+    "references": [
+      {
+        "title": "SKF Spectrum Analysis",
+        "source": "SKF",
+        "url": "https://cdn.skfmediahub.skf.com/api/public/0901d1968024acef/pdf_preview_medium/0901d1968024acef_pdf_preview_medium.pdf"
+      }
+    ],
+    "symptoms": [
+      "Elevated 2× running-speed component",
+      "High axial vibration",
+      "Bearing temperature and fatigue risk increase over time"
+    ],
+    "likely_causes": [
+      "Angular or parallel shaft misalignment",
+      "Thermal growth",
+      "Poor cold alignment during installation",
+      "Piping strain or foundation movement"
+    ],
+    "expected_vibration_signatures": [
+      "2× running speed often elevated; severe cases may show multiple harmonics",
+      "Phase across the coupling helps distinguish angular vs parallel misalignment",
+      "May coexist with bearing-defect frequencies because misalignment drives early fatigue"
+    ],
+    "confirm_tests": [
+      "Check 1× vs 2× relationship and axial vibration",
+      "Use phase measurements across coupling ends",
+      "Perform alignment verification"
+    ],
+    "fixes": [
+      "Realign shafts/couplings",
+      "Compensate for thermal growth and piping strain",
+      "Replace damaged bearing if secondary fatigue is confirmed"
+    ],
+    "notes": "This is essential because many 'bearing faults' are actually bearing symptoms caused by another machine problem.",
+    "source_file": "misalignment_induced_bearing_loading.md"
+  },
+  {
+    "id": "BRG-001",
+    "fault_name": "Outer race defect",
+    "aliases": [
+      "BPFO fault",
+      "outer race spall",
+      "outer ring defect"
+    ],
+    "category": "localized_bearing_defect",
+    "bearing_components": [
+      "outer_race"
+    ],
+    "observability_from_vibration": "high",
+    "confidence": "high",
+    "tags": [
+      "bpfo_fault",
+      "high",
+      "localized_bearing_defect",
+      "outer_race",
+      "outer_race_spall"
+    ],
+    "references": [
+      {
+        "title": "NI Bearings: Envelope Detection and Characteristic Frequencies",
+        "source": "NI",
+        "url": "https://www.ni.com/docs/en-US/bundle/labview-sound-and-vibration-toolkit/page/bearings.html"
+      },
+      {
+        "title": "NI Calculate Characteristic Frequencies and Orders",
+        "source": "NI",
+        "url": "https://www.ni.com/docs/en-US/bundle/labview-sound-and-vibration-toolkit/page/calculating-characteristic-frequencies-and-or.html"
+      },
+      {
+        "title": "SKF Spectrum Analysis",
+        "source": "SKF",
+        "url": "https://cdn.skfmediahub.skf.com/api/public/0901d1968024acef/pdf_preview_medium/0901d1968024acef_pdf_preview_medium.pdf"
+      },
+      {
+        "title": "CWRU Bearing Data Center",
+        "source": "Case Western Reserve University",
+        "url": "https://engineering.case.edu/bearingdatacenter"
+      }
+    ],
+    "symptoms": [
+      "Periodic impulsive vibration",
+      "Envelope spectrum peaks near BPFO and harmonics",
+      "High-frequency acceleration or envelope energy growth",
+      "Noise and vibration increase as damage progresses"
+    ],
+    "likely_causes": [
+      "Surface fatigue and spalling",
+      "Contaminated or ineffective lubrication",
+      "Improper installation or handling",
+      "Excess load or poor fits"
+    ],
+    "expected_vibration_signatures": [
+      "BPFO and harmonics in envelope spectrum",
+      "Stable repetition because outer race load zone is often fixed",
+      "May later appear as broad hump in higher-frequency spectrum"
+    ],
+    "confirm_tests": [
+      "Compute BPFO from bearing geometry and shaft speed",
+      "Compare calculated BPFO to envelope-spectrum peaks",
+      "Review time waveform for repetitive impacts",
+      "Inspect lubrication quality and loading/alignment conditions"
+    ],
+    "fixes": [
+      "Replace the bearing if defect is confirmed",
+      "Correct the root cause: lubrication, contamination, fit, or loading",
+      "Improve sealing and relubrication practice"
+    ],
+    "notes": "Good first card for a vibration assistant because observability is strong and it maps well to seeded-fault benchmarks such as CWRU.",
+    "source_file": "outer_race_defect.md"
+  },
+  {
+    "id": "BRG-014",
+    "fault_name": "Overheating / seizure",
+    "aliases": [
+      "bearing seizure",
+      "thermal damage",
+      "melting damage"
+    ],
+    "category": "damage_mechanism",
+    "bearing_components": [
+      "all"
+    ],
+    "observability_from_vibration": "medium",
+    "confidence": "high",
+    "tags": [
+      "all",
+      "bearing_seizure",
+      "damage_mechanism",
+      "medium",
+      "thermal_damage"
+    ],
+    "references": [
+      {
+        "title": "NSK Bearing Maintenance Guide",
+        "source": "NSK",
+        "url": "https://www.nsk.com/content/dam/nsk/am/en_us/documents/bearings-americas/Bearing-Maintenance-Guide.pdf"
+      }
+    ],
+    "symptoms": [
+      "Rapid increase in noise, heat, and vibration",
+      "Possible smearing, discoloration, or melting after teardown",
+      "Can escalate abruptly"
+    ],
+    "likely_causes": [
+      "Poor lubrication",
+      "Excessive load or excessive preload",
+      "Excessive speed",
+      "Too little internal clearance",
+      "Water or debris ingress",
+      "Poor shaft/housing precision or shaft bending"
+    ],
+    "expected_vibration_signatures": [
+      "Rapid broadband vibration increase",
+      "May be preceded by lubrication or preload-related roughness",
+      "Late-stage behavior can be chaotic rather than a clean defect family"
+    ],
+    "confirm_tests": [
+      "Review temperature trend and lubrication history",
+      "Check preload, clearance, speed, and alignment",
+      "Inspect for discoloration, smearing, melting, or seized elements"
+    ],
+    "fixes": [
+      "Correct lubrication method and load/speed/preload/clearance issues",
+      "Replace the bearing and inspect surrounding components"
+    ],
+    "notes": "Useful as an alarm-level card for severe conditions where the assistant should prioritize shutdown guidance.",
+    "source_file": "overheating_seizure.md"
+  },
+  {
+    "id": "BRG-009",
+    "fault_name": "Pitting",
+    "aliases": [
+      "micro-pitting",
+      "pitted raceway",
+      "pitted rolling element"
+    ],
+    "category": "damage_mechanism",
+    "bearing_components": [
+      "raceways",
+      "rolling_elements"
+    ],
+    "observability_from_vibration": "medium",
+    "confidence": "high",
+    "tags": [
+      "damage_mechanism",
+      "medium",
+      "micro-pitting",
+      "pitted_raceway",
+      "raceways",
+      "rolling_elements"
+    ],
+    "references": [
+      {
+        "title": "NSK Bearing Maintenance Guide",
+        "source": "NSK",
+        "url": "https://www.nsk.com/content/dam/nsk/am/en_us/documents/bearings-americas/Bearing-Maintenance-Guide.pdf"
+      }
+    ],
+    "symptoms": [
+      "Surface roughness and elevated noise",
+      "Intermittent or persistent high-frequency vibration growth",
+      "Can progress to clearer localized-defect signatures"
+    ],
+    "likely_causes": [
+      "Debris in lubricant",
+      "Moisture exposure",
+      "Poor lubrication"
+    ],
+    "expected_vibration_signatures": [
+      "Rough broadband response rather than a perfectly clean single defect family in early stages",
+      "May transition to stronger impulsive behavior as pits enlarge"
+    ],
+    "confirm_tests": [
+      "Inspect lubricant for debris or moisture",
+      "Check seals and environment",
+      "Use envelope plus time waveform trending"
+    ],
+    "fixes": [
+      "Improve sealing",
+      "Filter lubrication oil thoroughly",
+      "Use proper lubricant",
+      "Replace bearing if pitting is advanced"
+    ],
+    "notes": "Good card for bridging contamination, corrosion, and localized surface damage.",
+    "source_file": "pitting.md"
+  },
+  {
+    "id": "BRG-003",
+    "fault_name": "Rolling element defect",
+    "aliases": [
+      "ball defect",
+      "BSF fault",
+      "rolling element spall"
+    ],
+    "category": "localized_bearing_defect",
+    "bearing_components": [
+      "rolling_elements"
+    ],
+    "observability_from_vibration": "high",
+    "confidence": "medium_high",
+    "tags": [
+      "ball_defect",
+      "bsf_fault",
+      "high",
+      "localized_bearing_defect",
+      "rolling_elements"
+    ],
+    "references": [
+      {
+        "title": "NI Calculate Characteristic Frequencies and Orders",
+        "source": "NI",
+        "url": "https://www.ni.com/docs/en-US/bundle/labview-sound-and-vibration-toolkit/page/calculating-characteristic-frequencies-and-or.html"
+      },
+      {
+        "title": "SKF Spectrum Analysis",
+        "source": "SKF",
+        "url": "https://cdn.skfmediahub.skf.com/api/public/0901d1968024acef/pdf_preview_medium/0901d1968024acef_pdf_preview_medium.pdf"
+      },
+      {
+        "title": "CWRU Bearing Data Center",
+        "source": "Case Western Reserve University",
+        "url": "https://engineering.case.edu/bearingdatacenter"
+      }
+    ],
+    "symptoms": [
+      "Impulsive vibration with more variable repetition than pure outer-race defects",
+      "Envelope spectrum peaks near BSF or 2×BSF depending on convention",
+      "Broadband high-frequency energy growth"
+    ],
+    "likely_causes": [
+      "Surface fatigue or spall on a ball",
+      "Poor lubrication and sliding damage",
+      "Contamination or debris indentation"
+    ],
+    "expected_vibration_signatures": [
+      "BSF-related peaks with harmonics and possible sidebands",
+      "Amplitude can vary as the damaged rolling element contacts both races",
+      "Time waveform often less regular than a fixed outer-race defect"
+    ],
+    "confirm_tests": [
+      "Calculate BSF from geometry and shaft speed",
+      "Inspect envelope spectrum for BSF-related families",
+      "Check if diagnostic software uses BSF or ball-defect frequency = 2×BSF",
+      "Confirm with teardown or borescope if available"
+    ],
+    "fixes": [
+      "Replace the bearing",
+      "Improve lubrication and cleanliness",
+      "Check load, fit, and installation practice"
+    ],
+    "notes": "Use this card carefully because naming conventions differ: some tools label ball-defect frequency as 2×BSF.",
+    "source_file": "rolling_element_defect.md"
+  },
+  {
+    "id": "BRG-005",
+    "fault_name": "Subsurface fatigue / spalling progression",
+    "aliases": [
+      "fatigue spalling",
+      "flaking",
+      "rolling contact fatigue"
+    ],
+    "category": "damage_mechanism",
+    "bearing_components": [
+      "inner_race",
+      "outer_race",
+      "rolling_elements"
+    ],
+    "observability_from_vibration": "medium_high",
+    "confidence": "high",
+    "tags": [
+      "damage_mechanism",
+      "fatigue_spalling",
+      "flaking",
+      "inner_race",
+      "medium_high",
+      "outer_race",
+      "rolling_elements"
+    ],
+    "references": [
+      {
+        "title": "SKF Spectrum Analysis",
+        "source": "SKF",
+        "url": "https://cdn.skfmediahub.skf.com/api/public/0901d1968024acef/pdf_preview_medium/0901d1968024acef_pdf_preview_medium.pdf"
+      },
+      {
+        "title": "SKF Bearing Damage and Failure Analysis",
+        "source": "SKF",
+        "url": "https://cdn.skfmediahub.skf.com/api/public/093168a92d25cc46/pdf_preview_medium/093168a92d25cc46_pdf_preview_medium.pdf"
+      },
+      {
+        "title": "NASA PCoE Bearings / IMS Bearing Data Set",
+        "source": "NASA / University of Cincinnati IMS",
+        "url": "https://www.nasa.gov/intelligent-systems-division/discovery-and-systems-health/pcoe/pcoe-data-set-repository/"
+      },
+      {
+        "title": "NASA PCoE Bearings / IMS Bearing Data Set",
+        "source": "NASA / University of Cincinnati IMS",
+        "url": "https://www.nasa.gov/intelligent-systems-division/discovery-and-systems-health/pcoe/pcoe-data-set-repository/"
+      }
+    ],
+    "symptoms": [
+      "Gradually increasing noise and vibration",
+      "Early high-frequency impulsive activity followed by stronger broadband vibration",
+      "Later-stage spectrum may show a broad hump near characteristic bearing bands"
+    ],
+    "likely_causes": [
+      "Age-related rolling contact fatigue",
+      "Higher loading than anticipated",
+      "Incorrect fits or installation",
+      "Ineffective or contaminated lubrication"
+    ],
+    "expected_vibration_signatures": [
+      "Early stage: local-defect signatures in envelope spectrum",
+      "Late stage: stronger velocity and acceleration response, sometimes broad humps",
+      "Progression is gradual rather than abrupt"
+    ],
+    "confirm_tests": [
+      "Trend envelope indicators over time",
+      "Review residual-life trend and maintenance history",
+      "Check calculated defect frequencies plus overall vibration growth",
+      "Confirm with inspection if practical"
+    ],
+    "fixes": [
+      "Plan replacement before catastrophic failure",
+      "Address the underlying load, lubrication, and fit issues",
+      "Set alarm logic on trend rate, not just absolute level"
+    ],
+    "notes": "This card helps bridge early defect detection and maintenance planning.",
+    "source_file": "subsurface_fatigue_spalling.md"
+  },
+  {
+    "id": "BRG-006",
+    "fault_name": "Surface distress",
+    "aliases": [
+      "surface-initiated damage",
+      "surface cracking from distress"
+    ],
+    "category": "damage_mechanism",
+    "bearing_components": [
+      "raceways",
+      "rolling_elements"
+    ],
+    "observability_from_vibration": "medium_high",
+    "confidence": "high",
+    "tags": [
+      "damage_mechanism",
+      "medium_high",
+      "raceways",
+      "rolling_elements",
+      "surface-initiated_damage",
+      "surface_cracking_from_distress"
+    ],
+    "references": [
+      {
+        "title": "SKF Spectrum Analysis",
+        "source": "SKF",
+        "url": "https://cdn.skfmediahub.skf.com/api/public/0901d1968024acef/pdf_preview_medium/0901d1968024acef_pdf_preview_medium.pdf"
+      },
+      {
+        "title": "NI Bearings: Envelope Detection and Characteristic Frequencies",
+        "source": "NI",
+        "url": "https://www.ni.com/docs/en-US/bundle/labview-sound-and-vibration-toolkit/page/bearings.html"
+      }
+    ],
+    "symptoms": [
+      "Early high-frequency noise and impulsive activity",
+      "Envelope indicators rise before large overall-velocity changes",
+      "Progressive roughness and noise"
+    ],
+    "likely_causes": [
+      "Excessive load",
+      "Improper lubrication"
+    ],
+    "expected_vibration_signatures": [
+      "Envelope analysis is often more sensitive than standard velocity measures",
+      "High-frequency resonance-excited impacts can precede gross failure"
+    ],
+    "confirm_tests": [
+      "Run demodulation/envelope analysis",
+      "Compare high-frequency channels against baseline",
+      "Check lubrication condition and applied load"
+    ],
+    "fixes": [
+      "Correct load and lubrication conditions",
+      "Inspect for early cracking and replace the bearing if damage is confirmed"
+    ],
+    "notes": "Useful as a root-cause-oriented card when the assistant sees early HF growth but cannot yet localize to one component.",
+    "source_file": "surface_distress.md"
+  },
+  {
+    "id": "BRG-017",
+    "fault_name": "Unbalance-induced bearing loading",
+    "aliases": [
+      "rotor unbalance affecting bearing",
+      "1x unbalance"
+    ],
+    "category": "adjacent_machine_fault",
+    "bearing_components": [
+      "system_level"
+    ],
+    "observability_from_vibration": "high",
+    "confidence": "high",
+    "tags": [
+      "1x_unbalance",
+      "adjacent_machine_fault",
+      "high",
+      "rotor_unbalance_affecting_bearing",
+      "system_level"
+    ],
+    "references": [
+      {
+        "title": "SKF Spectrum Analysis",
+        "source": "SKF",
+        "url": "https://cdn.skfmediahub.skf.com/api/public/0901d1968024acef/pdf_preview_medium/0901d1968024acef_pdf_preview_medium.pdf"
+      }
+    ],
+    "symptoms": [
+      "Strong 1× running-speed vibration",
+      "Increased radial load on bearing",
+      "May accelerate fatigue and looseness"
+    ],
+    "likely_causes": [
+      "Mass eccentricity on rotor, fan, pulley, or coupling",
+      "Build-up of product or debris",
+      "Manufacturing or repair imbalance"
+    ],
+    "expected_vibration_signatures": [
+      "Dominant 1× running-speed component",
+      "Phase stable with speed if unbalance is primary"
+    ],
+    "confirm_tests": [
+      "Confirm dominant synchronous 1× peak",
+      "Check phase consistency and speed relation",
+      "Inspect rotor/fan/pulley for build-up or mass imbalance"
+    ],
+    "fixes": [
+      "Balance the rotor",
+      "Clean or repair rotating components",
+      "Inspect bearing for secondary damage if vibration was prolonged"
+    ],
+    "notes": "Not a bearing defect by itself, but critical in a debugging assistant because it is a common confounder.",
+    "source_file": "unbalance_induced_bearing_loading.md"
+  }
+]
